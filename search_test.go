@@ -42,7 +42,7 @@ func TestSearch(t *testing.T) {
 			t.Error("Function returned an error.")
 		}
 		if equal(got, c.want) {
-			t.Error("Expectation doesn't match the result.")
+			t.Errorf("Search(\"data/\", %v) == %v, want %v.\n", c.in, got, c.want)
 		}
 	}
 }
@@ -64,7 +64,7 @@ func TestSearchResult(t *testing.T) {
 			t.Error("Function returned an error.")
 		}
 		if equal(c.in.Files, c.want) {
-			t.Error("Expectation doesn't match the result.")
+			t.Errorf("%+v.Search() == %v, want %v.", c.in, c.in.Files, c.want)
 		}
 	}
 }
