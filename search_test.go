@@ -46,3 +46,25 @@ func TestSearch(t *testing.T) {
 		}
 	}
 }
+
+func TestSearchResult(t *testing.T) {
+	cases := []struct {
+		in   *SearchResult
+		want []string
+	}{
+		{
+			in:   &SearchResult{Dir: "data/", Tag: "#Hauptspeise"},
+			want: []string{"Kürbis-Pesto.txt", "Basilikum-Pesto.txt", "Apfel-Mangold-Tarte.txt"},
+		},
+	}
+
+	for _, c := range cases {
+		err := c.in.Search()
+		if err != nil {
+			t.Error("Function returned an error.")
+		}
+		if equal(c.in.Files, c.want) {
+			t.Error("Expectation doesn't match the result.")
+		}
+	}
+}

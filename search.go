@@ -10,6 +10,18 @@ import (
 	"sync"
 )
 
+type SearchResult struct {
+	Dir   string
+	Tag   string
+	Files []string
+}
+
+func (sr *SearchResult) Search() error {
+	f, err := Search(sr.Dir, sr.Tag)
+	sr.Files = f
+	return err
+}
+
 // Search looks through all files in a given `dir` and searches for occurences of `tag`, returning a slice of strings of the files containing `tag`.
 // It spawns one goroutine for each file.
 func Search(dir, tag string) ([]string, error) {
