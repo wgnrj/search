@@ -53,7 +53,7 @@ func TestSearchResult(t *testing.T) {
 		want []string
 	}{
 		{
-			in:   &SearchResult{Dir: "data/", Tag: "#Hauptspeise"},
+			in:   &SearchResult{Directory: "data/", Pattern: "#Hauptspeise"},
 			want: []string{"Kürbis-Pesto.txt", "Basilikum-Pesto.txt", "Apfel-Mangold-Tarte.txt"},
 		},
 	}
