@@ -7,9 +7,9 @@
 package search
 
 import (
+	"bytes"
 	"io/ioutil"
 	"log"
-	"strings"
 	"sync"
 )
 
@@ -61,7 +61,7 @@ func Search(directory, pattern string) ([]string, error) {
 				return
 			}
 
-			if strings.Contains(string(b), pattern) {
+			if bytes.Contains(b, []byte(pattern)) {
 				files <- f
 			}
 		}(v)
