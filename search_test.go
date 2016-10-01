@@ -1,12 +1,10 @@
-// https://github.com/google/codesearch
-// https://golang.org/pkg/bufio/#NewScanner
-
 package search
 
 import (
 	"testing"
 )
 
+// equal tests two slices of strings for equality.
 func equal(a, b []string) bool {
 	if a == nil && b == nil {
 		return true
@@ -37,12 +35,12 @@ func TestSearch(t *testing.T) {
 	}
 
 	for _, c := range cases {
-		got, err := Search("data/", c.in)
+		got, err := Search("testdata/", c.in)
 		if err != nil {
 			t.Error("Function returned an error.")
 		}
 		if equal(got, c.want) {
-			t.Errorf("Search(\"data/\", %v) == %v, want %v.\n", c.in, got, c.want)
+			t.Errorf("Search(\"testdata/\", %v) == %v, want %v.\n", c.in, got, c.want)
 		}
 	}
 }
@@ -53,7 +51,7 @@ func TestSearchResult(t *testing.T) {
 		want []string
 	}{
 		{
-			in:   &SearchResult{Directory: "data/", Pattern: "#Hauptspeise"},
+			in:   &SearchResult{Directory: "testdata/", Pattern: "#Hauptspeise"},
 			want: []string{"Kürbis-Pesto.txt", "Basilikum-Pesto.txt", "Apfel-Mangold-Tarte.txt"},
 		},
 	}

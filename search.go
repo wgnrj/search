@@ -13,12 +13,15 @@ import (
 	"sync"
 )
 
+// SearchResult stores the directory to search in, the pattern to search for and the result files.
 type SearchResult struct {
 	Directory string
 	Pattern   string
 	Files     []string
 }
 
+// Search is a wrapper method for the SearchResult struct.
+// It calls Search to do the actual work and stores the results in the struct.
 func (sr *SearchResult) Search() error {
 	f, err := Search(sr.Directory, sr.Pattern)
 	if err == nil {
